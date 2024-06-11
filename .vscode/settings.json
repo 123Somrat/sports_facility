@@ -1,0 +1,7 @@
+{
+  "breadcrumbs.enabled": false,
+  "breadcrumbs.icons": true,
+  "breadcrumbs.filePath": "on",
+  "breadcrumbs.showArrays": true,
+  "breadcrumbs.showBooleans": true
+}
