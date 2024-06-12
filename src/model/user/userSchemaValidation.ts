@@ -15,7 +15,7 @@ const userValidationSchema = z.object({
     .string({ required_error: "Phone number is requires" })
     .min(11, { message: "Phoen number should be 11 chrecter long" }),
   role: z.enum(["user", "admin"], { message: "Role is requires" }),
-  address: z.string({ required_error: "Address is required" }),
+  address: z.string({ required_error: "Address is required" }).min(10),
 });
 
 export default userValidationSchema;

@@ -28,7 +28,7 @@ const userSchema = new Schema<UserInterface>({
     type: String,
     required: true,
   }
-});
+},{timestamps:true});
 
 
 const userModel = model<UserInterface>('user',userSchema);
