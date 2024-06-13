@@ -1,3 +1,25 @@
-import registerUser from "./registerUser";
+import UserInterface from "../../model/user/userInterface";
+import userModel from "../../model/user/userSchema";
 
-export  {registerUser}
+/**
+ *
+ * @param email
+ * @returns If user exeist retun true and not exeist then return fasle
+ */
+const userExeist = async (email: string) => {
+  const hasUser = await userModel.findOne({ email });
+
+  return hasUser ? true : false;
+};
+
+/**
+ *
+ * @param paylode
+ * @returns user
+ */
+const createUser = async (paylode: UserInterface) => {
+  const user = userModel.create(paylode);
+  return user;
+};
+
+export = { userExeist, createUser };
