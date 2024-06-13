@@ -1,3 +1,4 @@
+import login from "./login";
 import register from "./register";
 
-export = { register }
+export = { register, login };
