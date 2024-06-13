@@ -7,4 +7,9 @@ const generateHash = async (password: string) => {
   return hash;
 };
 
-export { generateHash };
+const mathingHased = async (password: string, hash: string) => {
+  const hasMathed = await bcrypt.compare(password, hash);
+  return hasMathed;
+};
+
+export { generateHash, mathingHased };

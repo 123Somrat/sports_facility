@@ -1,6 +1,14 @@
 import UserInterface from "../../model/user/userInterface";
 import userService from "../user";
-import { generateHash } from "../../utils/hasing";
+import { generateHash, mathingHased } from "../../utils/hasing";
+import { generateToken } from "../token";
+
+type loginDataType = {
+    email:string,
+    password : string
+}
+
+
 
 /**
  *
@@ -23,4 +31,31 @@ const register = async (paylode: UserInterface) => {
   return user;
 };
 
-export = { register };
+
+/**
+ * @param paylode 
+ * return JWt token
+ */
+const loginUser =async (paylode:loginDataType)=>{
+   
+   const user = await userService.findUserByEmail(paylode.email);
+   if (!user) {
+      throw new Error("Invalid Credentials");
+    }
+
+     const hasMathed = await mathingHased(paylode.password,user.password)
+     
+      if(!hasMathed){
+          throw new Error('Invalid Credential')
+      }
+    
+      const access_token = generateToken(user);
+     
+       return { user ,access_token }
+
+}
+
+
+
+
+export = { register , loginUser };

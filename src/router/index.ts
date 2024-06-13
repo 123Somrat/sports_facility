@@ -6,10 +6,10 @@ import loginDataValidation from '../middleWare/loginDataValidation';
 const router = expres.Router();
 
 
+// Auth route
+router.post('/api/v1/auth/register',userValidation,userControllers.register)
+router.post('/api/v1/auth/login',loginDataValidation,userControllers.login)
 
-router.route('/api/v1/auth/register')
-.get(loginDataValidation,userControllers.login)
-.post(userValidation,userControllers.register)
 
 
 

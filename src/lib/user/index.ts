@@ -8,8 +8,17 @@ import userModel from "../../model/user/userSchema";
  */
 const userExeist = async (email: string) => {
   const hasUser = await userModel.findOne({ email });
-
   return hasUser ? true : false;
+};
+
+/**
+ *
+ * @param email
+ * @returns
+ */
+const findUserByEmail = (email: string) => {
+  const user = userModel.findOne({ email });
+  return user;
 };
 
 /**
@@ -22,4 +31,4 @@ const createUser = async (paylode: UserInterface) => {
   return user;
 };
 
-export = { userExeist, createUser };
+export = { userExeist, createUser , findUserByEmail};
