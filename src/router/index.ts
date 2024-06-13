@@ -3,6 +3,8 @@ import { controllers as userControllers } from '../api/v1/user';
 import { controllers as facilityControllers } from '../api/v1/facility';
 import userValidation from '../middleWare/userValidation';
 import loginDataValidation from '../middleWare/loginDataValidation';
+import facilityValidationMiddleWare from '../middleWare/facilityValiidationMiddleWare';
+import userAuthenticationMiddleWare from '../middleWare/userAutheticationMiddleWare';
 
 const router = expres.Router();
 
@@ -13,7 +15,7 @@ router.post('/api/v1/auth/login',loginDataValidation,userControllers.login)
 
 // Facility
 router.route('/api/v1/facilitys')
-.post(facilityControllers.createFacility)
+.post(facilityValidationMiddleWare,userAuthenticationMiddleWare,facilityControllers.createFacility)
 
 
 export default router;
