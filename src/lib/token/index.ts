@@ -6,4 +6,13 @@ const generateToken = (paylode: UserInterface) => {
   return token;
 };
 
-export { generateToken };
+const validateToken = async (token: string) => {
+  try {
+    const decodedData = jwt.verify(token, process.env.JWT_HASH as string);
+    return decodedData;
+  } catch (err) {
+    console.log("i am from error", err);
+  }
+};
+
+export { generateToken, validateToken };

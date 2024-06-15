@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import userValidationSchema from "../model/user/userSchemaValidation";
 
-const userValidation = (req: Request, res: Response, next: NextFunction) => {
+const requestValidation = (req: Request, res: Response, next: NextFunction) => {
   const isValidated = userValidationSchema.safeParse(req.body);
 
   if (!isValidated.success) {
@@ -22,4 +22,4 @@ const userValidation = (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
-export default userValidation;
+export default requestValidation;
