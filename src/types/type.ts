@@ -3,13 +3,13 @@ import { Request } from "express";
 declare global {
   namespace Express {
       interface Request {
-          user ?: JwtPayload;
+          user : JwtPayload;
       }
   }
 }
 
 interface AuthenticatedRequest extends Request {
-  user?: JwtPayload;
+  user: JwtPayload;
 }
 
 export default AuthenticatedRequest

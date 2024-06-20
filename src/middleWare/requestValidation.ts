@@ -9,7 +9,7 @@ let isValidated;
 
   if(req.url==='/api/v1/auth/login'){
      isValidated = userLoginDataValidation.safeParse(req.body);
-  }else if(req.url==='/api/v1/auth/registretion'){
+  }else if(req.url==='/api/v1/auth/register'){
     isValidated = userValidationSchema.safeParse(req.body);
   }else{
    isValidated = facilityVaidationSchema.safeParse(req.body)
