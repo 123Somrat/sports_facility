@@ -1,9 +1,17 @@
 import { NextFunction, Request, Response } from "express";
 import userValidationSchema from "../model/user/userSchemaValidation";
+import userLoginDataValidation from "../model/user/loginDataValidation";
 
 const requestValidation = (req: Request, res: Response, next: NextFunction) => {
-  const isValidated = userValidationSchema.safeParse(req.body);
 
+let isValidated;
+
+  if(req.url==='/api/v1/auth/login'){
+     isValidated = userLoginDataValidation.safeParse(req.body);
+  }else {
+    isValidated = userValidationSchema.safeParse(req.body);
+  }
+ 
   if (!isValidated.success) {
     const errors = isValidated.error.errors.map((error) => {
       return {
@@ -11,7 +19,7 @@ const requestValidation = (req: Request, res: Response, next: NextFunction) => {
         message: error.message,
       };
     });
-
+      console.log('from auth login',errors)
     return res.status(400).json({
         status:400,
         code : 'Bad Request',
