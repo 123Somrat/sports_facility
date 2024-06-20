@@ -5,7 +5,7 @@ import AuthenticatedRequest from "../../../../types/type";
 
 const createFacility = (req:AuthenticatedRequest,res:Response)=>{
 
-   console.log(req.user)
+ 
 
 
 
