@@ -1,5 +1,5 @@
 import UserInterface from "../../model/user/userInterface";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
 type paylode = {
   role: string;
@@ -12,7 +12,7 @@ const generateToken = (paylode: paylode) => {
 const validateToken = async (token: string) => {
   try {
     const decodedData = jwt.verify(token, process.env.JWT_HASH as string);
-    return decodedData;
+    return decodedData as JwtPayload;
   } catch (err) {
     console.log(err);
   }

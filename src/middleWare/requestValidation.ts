@@ -22,7 +22,6 @@ let isValidated;
         message: error.message,
       };
     });
-      console.log('from auth login',errors)
     return res.status(400).json({
         status:400,
         code : 'Bad Request',

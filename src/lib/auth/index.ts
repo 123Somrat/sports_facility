@@ -51,12 +51,12 @@ const loginUser =async (paylode:loginDataType)=>{
       
 
         const paylodes = {
-             id:user._id,
+            id:user._id,
              role:user.role
         }
 
       const access_token = generateToken(paylodes);
-     
+       
        return { user ,access_token }
 
 }

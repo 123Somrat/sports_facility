@@ -3,5 +3,6 @@
   "breadcrumbs.icons": true,
   "breadcrumbs.filePath": "on",
   "breadcrumbs.showArrays": true,
-  "breadcrumbs.showBooleans": true
+  "breadcrumbs.showBooleans": true,
+  "liveServer.settings.multiRootWorkspaceName": "sports_facility"
 }

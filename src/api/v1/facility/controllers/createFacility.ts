@@ -1,10 +1,11 @@
-import { Request , Response } from "express";
+import {  Response } from "express";
+
+import AuthenticatedRequest from "../../../../types/type";
 
 
+const createFacility = (req:AuthenticatedRequest,res:Response)=>{
 
-const createFacility = (req:Request,res:Response)=>{
-
-     console.log(req.headers.authorization)
+   console.log(req.user)
 
 
 

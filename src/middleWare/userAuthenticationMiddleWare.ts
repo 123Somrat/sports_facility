@@ -1,9 +1,12 @@
-import { Request, Response, NextFunction } from "express";
+import {  Response, NextFunction } from "express";
 import { validateToken } from "../lib/token";
 import { JwtPayload } from "jsonwebtoken";
+import AuthenticatedRequest from "../types/type";
+
+
 
 const userAuthenticationMiddleWare = async (
-  req: Request,
+  req: AuthenticatedRequest,
   res: Response,
   next: NextFunction
 ) => {
@@ -16,12 +19,16 @@ const userAuthenticationMiddleWare = async (
   }
 
   //  call authToken validation service for validate the token
-  const decodedData = await validateToken(authToken);
+  const decodedData = (await validateToken(authToken)) as JwtPayload;
 
-  if (decodedData) {
-    req.user = decodedData as JwtPayload;
-    next()
-  }
+if(decodedData){
+  req.user = decodedData as JwtPayload;
+  next();
+}
+  
+  
+   
+  
 };
 
 export default userAuthenticationMiddleWare;
