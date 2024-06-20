@@ -1,15 +1,15 @@
-import {  Response } from "express";
-
+import { Response } from "express";
+import facilityService from '../../../../lib/facilitys'
 import AuthenticatedRequest from "../../../../types/type";
 
 
-const createFacility = (req:AuthenticatedRequest,res:Response)=>{
-
+const createFacility = async(req:AuthenticatedRequest,res:Response)=>{
+       
+    const facilityInfo = req.body;
  
-
-
-
-
+     const createdFacility =await facilityService.createFacility(facilityInfo)
+       
+     console.log(createdFacility)
 
 }
 
