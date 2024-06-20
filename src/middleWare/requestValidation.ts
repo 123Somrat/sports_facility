@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import userValidationSchema from "../model/user/userSchemaValidation";
 import userLoginDataValidation from "../model/user/loginDataValidation";
+import facilityVaidationSchema from "../model/facility/facilityValidationSchema";
 
 const requestValidation = (req: Request, res: Response, next: NextFunction) => {
 
@@ -8,8 +9,10 @@ let isValidated;
 
   if(req.url==='/api/v1/auth/login'){
      isValidated = userLoginDataValidation.safeParse(req.body);
-  }else {
+  }else if(req.url==='/api/v1/auth/registretion'){
     isValidated = userValidationSchema.safeParse(req.body);
+  }else{
+   isValidated = facilityVaidationSchema.safeParse(req.body)
   }
  
   if (!isValidated.success) {

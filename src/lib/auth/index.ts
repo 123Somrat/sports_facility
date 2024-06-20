@@ -48,8 +48,14 @@ const loginUser =async (paylode:loginDataType)=>{
       if(!hasMathed){
           throw new Error('Invalid Credential')
       }
-    
-      const access_token = generateToken(user);
+      
+
+        const paylodes = {
+             id:user._id,
+             role:user.role
+        }
+
+      const access_token = generateToken(paylodes);
      
        return { user ,access_token }
 
