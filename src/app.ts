@@ -18,7 +18,7 @@ app.get("/api/v1/health", (_req: Request, res: Response) => {
 
 app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
   next()
-  res.json({
+  res.status(err.status).json({
     status: err.status || 500,
     code: err.code || "Internal server error",
     messege: err.message || "Opps someThing wrong in our side",

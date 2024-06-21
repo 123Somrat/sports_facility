@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import authService from "../../../../lib/auth";
+import asyncHandeler from "../../../../utils/asyncHandeler";
 
 
-const login = async (req: Request, res: Response) => {
+const login = asyncHandeler(async (req: Request, res: Response) => {
   const { user, access_token } = await authService.loginUser(req.body);
 
   // TransFormed user data
@@ -22,6 +23,6 @@ const login = async (req: Request, res: Response) => {
     access_token: access_token,
     data: trandFormedUserData,
   });
-};
+});
 
 export default login;

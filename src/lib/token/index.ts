@@ -1,5 +1,6 @@
 import UserInterface from "../../model/user/userInterface";
 import jwt, { JwtPayload } from "jsonwebtoken";
+import HttpError from "../../utils/httpError";
 
 type paylode = {
   role: string;
@@ -14,7 +15,7 @@ const validateToken = async (token: string) => {
     const decodedData = jwt.verify(token, process.env.JWT_HASH as string);
     return decodedData as JwtPayload;
   } catch (err) {
-    console.log(err);
+     throw new HttpError(403,'Access denied','Access denied');
   }
 };
 

@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import facilityService from "../../../../lib/facilitys";
+import asyncHandeler from "../../../../utils/asyncHandeler";
 
 
-const createFacility = async (req: Request, res: Response) => {
+const createFacility = asyncHandeler(async (req: Request, res: Response) => {
   const facilityInfo = req.body;
 
   const createdFacility = await facilityService.createFacility(facilityInfo);
@@ -12,6 +13,6 @@ const createFacility = async (req: Request, res: Response) => {
     code: "Facility Created Succesfully",
     data: createdFacility,
   });
-};
+});
 
 export default createFacility;
