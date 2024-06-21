@@ -7,7 +7,7 @@ const register =asyncHandeler (async (req: Request, res: Response) => {
   const validatedUserInfo = req.body;
 
   // Call userRegistreyion service for create user
-  const user = await authService.register(req.body);
+  const user = await authService.register(validatedUserInfo);
 
   res.status(201).json({
     success:true,
