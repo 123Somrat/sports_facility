@@ -6,9 +6,6 @@ interface AuthenticatedUser extends Request{
 }
 
 
-
-
-
 declare global {
   namespace Express {
       interface Request {

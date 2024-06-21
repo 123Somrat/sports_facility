@@ -7,6 +7,9 @@ class HttpError extends Error {
     this.status = status;
     this.code = code;
     this.message = message;
+    
+        // Set the prototype explicitly to maintain the prototype chain
+        Object.setPrototypeOf(this, HttpError.prototype);
   }
 }
 

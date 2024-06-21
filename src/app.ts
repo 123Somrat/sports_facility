@@ -1,8 +1,9 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response , NextFunction} from "express";
 import cors from "cors";
 import middleWare from "./middleWare";
+import HttpError from "./utils/httpError";
 
-// CReate  Express App
+// Create  Express App
 const app = express();
 // Call MiddleWare function and pass the express app as a params
 middleWare(app)
@@ -14,5 +15,18 @@ app.get("/api/v1/health", (_req: Request, res: Response) => {
     messege: "Application is running",
   });
 });
+
+app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
+  next()
+  res.json({
+    status: err.status || 500,
+    code: err.code || "Internal server error",
+    messege: err.message || "Opps someThing wrong in our side",
+  });
+});
+
+
+
+
 
 export default app;
