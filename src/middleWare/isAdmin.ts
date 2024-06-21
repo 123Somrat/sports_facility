@@ -1,7 +1,8 @@
-import { NextFunction, Response } from "express";
-import AuthenticatedRequest from "../types/type";
+import { NextFunction, Request, Response } from "express";
+import AuthenticatedUser from "../types/type";
+
 const isAdmin = (
-  req: AuthenticatedRequest,
+  req: AuthenticatedUser,
   res: Response,
   next: NextFunction
 ) => {

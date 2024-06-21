@@ -1,10 +1,11 @@
-import { Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from "express";
 import { validateToken } from "../lib/token";
 import { JwtPayload } from "jsonwebtoken";
-import AuthenticatedRequest from "../types/type";
+import HttpError from "../utils/httpError";
+import AuthenticatedUser from "../types/type";
 
 const userAuthenticationMiddleWare = async (
-  req: AuthenticatedRequest,
+  req: AuthenticatedUser,
   res: Response,
   next: NextFunction
 ) => {
@@ -13,7 +14,7 @@ const userAuthenticationMiddleWare = async (
 
   // Checking auth token has or not
   if (!authToken) {
-    throw new Error("Invalid data");
+    throw new HttpError(403,'Access denied','Access denied');
   }
 
   //  call authToken validation service for validate the token
