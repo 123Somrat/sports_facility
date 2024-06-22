@@ -6,7 +6,8 @@ type paylode = {
   role: string;
 };
 const generateToken = (paylode: paylode) => {
-  const token = jwt.sign({ paylode }, process.env.JWT_HASH as string);
+  const expirationTime = Math.floor(Date.now() / 1000) + (10 * 60);
+  const token = jwt.sign({ paylode }, process.env.JWT_HASH as string,{expiresIn:expirationTime});
   return token;
 };
 
