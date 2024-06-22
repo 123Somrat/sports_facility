@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import AuthenticatedUser from "../types/type";
 import HttpError from "../utils/httpError";
 
-const isAdmin = (req: AuthenticatedUser, res: Response, next: NextFunction) => {
+const hasPermission = (req: AuthenticatedUser, _res: Response, next: NextFunction) => {
   try {
     // destructure the role
     let role = req.user.paylode.role;
@@ -22,4 +22,4 @@ const isAdmin = (req: AuthenticatedUser, res: Response, next: NextFunction) => {
   }
 };
 
-export default isAdmin;
+export default hasPermission;
