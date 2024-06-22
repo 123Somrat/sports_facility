@@ -16,5 +16,11 @@ router.post('/api/v1/auth/login',requestValidation,userControllers.login)
 router.route('/api/v1/facilitys')
 .post(requestValidation,userAuthenticationMiddleWare,hasPermission,facilityControllers.createFacility)
 
+// Update facility and delete a afcility
+router.route('/api/v1/facilitys/:id')
+.patch(userAuthenticationMiddleWare,hasPermission,facilityControllers.updateFacility)
+
+
+
 
 export default router;

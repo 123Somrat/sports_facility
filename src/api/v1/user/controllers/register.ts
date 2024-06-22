@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import authService from "../../../../lib/auth";
 import asyncHandeler from "../../../../utils/asyncHandeler";
 
-const register =asyncHandeler (async (req: Request, res: Response) => {
+const register =asyncHandeler (async (req, res) => {
   // Validated user data
   const validatedUserInfo = req.body;
 

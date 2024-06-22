@@ -3,7 +3,7 @@ import authService from "../../../../lib/auth";
 import asyncHandeler from "../../../../utils/asyncHandeler";
 
 
-const login = asyncHandeler(async (req: Request, res: Response) => {
+const login = asyncHandeler(async (req, res) => {
   const { user, access_token } = await authService.loginUser(req.body);
 
   // TransFormed user data

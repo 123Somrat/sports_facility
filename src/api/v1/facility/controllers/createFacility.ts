@@ -3,7 +3,7 @@ import facilityService from "../../../../lib/facilitys";
 import asyncHandeler from "../../../../utils/asyncHandeler";
 
 
-const createFacility = asyncHandeler(async (req: Request, res: Response) => {
+const createFacility = asyncHandeler(async (req, res) => {
   const facilityInfo = req.body;
 
   const createdFacility = await facilityService.createFacility(facilityInfo);
