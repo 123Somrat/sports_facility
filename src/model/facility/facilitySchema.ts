@@ -1,6 +1,7 @@
 import { Schema, model } from "mongoose";
 import facilityInterface from "./facilityInterface";
 
+
 /**
  * return  facilityModel
  */
@@ -21,6 +22,11 @@ const facilitySchema = new Schema<facilityInterface>({
     type: String,
     required: true,
   },
+  isDeleted:{
+     type:Boolean,
+     required:true,
+     default:false
+  }
 });
 
 // Create Facility model

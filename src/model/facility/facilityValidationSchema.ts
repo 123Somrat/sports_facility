@@ -10,6 +10,7 @@ const facilityVaidationSchema = z.object({
     .number({ required_error: "Price is required" })
     .nonnegative({ message: "Price can not be negative" }),
   location: z.string({ required_error: "Location is required" }).min(10),
+  isDeleted:z.boolean().optional()
 });
 
 export default facilityVaidationSchema;
