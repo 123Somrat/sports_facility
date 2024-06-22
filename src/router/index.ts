@@ -5,6 +5,7 @@ import requestValidation from '../middleWare/requestValidation';
 import userAuthenticationMiddleWare from '../middleWare/userAuthenticationMiddleWare';
 import hasPermission from '../middleWare/hasPermission';
 
+
 const router = expres.Router();
 
 
@@ -18,7 +19,7 @@ router.route('/api/v1/facilitys')
 
 // Update facility and delete a afcility
 router.route('/api/v1/facilitys/:id')
-.patch(userAuthenticationMiddleWare,hasPermission,facilityControllers.updateFacility)
+.patch(requestValidation,userAuthenticationMiddleWare,hasPermission,facilityControllers.updateFacility)
 
 
 
