@@ -3,7 +3,7 @@ import { validateToken } from "../lib/token";
 import { JwtPayload } from "jsonwebtoken";
 import HttpError from "../utils/httpError";
 import AuthenticatedUser from "../types/type";
-import asyncHandeler from "../utils/asyncHandeler";
+
 
 const userAuthenticationMiddleWare = async (
   req: AuthenticatedUser,
@@ -13,7 +13,7 @@ const userAuthenticationMiddleWare = async (
   try {
     // Collect the authToken from request
     const authToken = req.headers.authorization?.split(" ")[1] as string;
-
+   
     // Checking auth token has or not
     if (!authToken) {
       throw new HttpError(403, "Access denied", "Access denied");

@@ -3,7 +3,7 @@ import facilityInterface from "../../model/facility/facilityInterface";
 import HttpError from "../../utils/httpError";
 
 /**
- * 
+ *
  * @param data \
  * @returns Created Facility
  */
@@ -13,11 +13,22 @@ const createFacility = async (data: facilityInterface) => {
 };
 
 
-
 /**
  * 
- * @param id 
- * @param paylode 
+ * @returns Facilitys
+ */
+const getAllFacilitys = async () => {
+
+  // Retriving facility from db
+  const facilitys = await facilityModel.find({});
+
+  return facilitys;
+};
+
+/**
+ *
+ * @param id
+ * @param paylode
  * @returns Updated facility
  */
 const updateFaculity = async (id: string, paylode: facilityInterface) => {
@@ -41,4 +52,4 @@ const updateFaculity = async (id: string, paylode: facilityInterface) => {
   return updatedFacility;
 };
 
-export = { createFacility, updateFaculity };
+export = { createFacility, getAllFacilitys, updateFaculity };

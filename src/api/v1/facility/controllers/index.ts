@@ -3,4 +3,4 @@ import getAllFacilitys from "./getAllFacilitys";
 import updateFacility from "./updateFacility";
 
 
-export = { createFacility , updateFacility , getAllFacilitys}
+export = { createFacility , getAllFacilitys , updateFacility }

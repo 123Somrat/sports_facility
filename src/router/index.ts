@@ -15,7 +15,7 @@ router.post('/api/v1/auth/login',requestValidation,userControllers.login)
 
 // Facility
 router.route('/api/v1/facilitys')
-.get(hasPermission,facilityControllers.getAllFacilitys)
+.get(userAuthenticationMiddleWare,hasPermission,facilityControllers.getAllFacilitys)
 .post(requestValidation,userAuthenticationMiddleWare,hasPermission,facilityControllers.createFacility)
 
 // Update facility and delete a afcility
