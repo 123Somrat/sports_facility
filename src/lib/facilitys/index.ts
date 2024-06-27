@@ -52,4 +52,16 @@ const updateFaculity = async (id: string, paylode: facilityInterface) => {
   return updatedFacility;
 };
 
+const deleteAFacility =async (id:string)=>{
+    const isFacilityExeist = await facilityModel.findById(id)
+     console.log(isFacilityExeist)
+
+
+}
+
+
+
+
+
+
 export = { createFacility, getAllFacilitys, updateFaculity };
