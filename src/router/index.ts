@@ -21,6 +21,7 @@ router.route('/api/v1/facilitys')
 // Update facility and delete a afcility
 router.route('/api/v1/facilitys/:id')
 .patch(requestValidation,userAuthenticationMiddleWare,hasPermission,facilityControllers.updateAFacility)
+.delete(userAuthenticationMiddleWare,hasPermission,facilityControllers.deleteAFacility)
 
 
 
