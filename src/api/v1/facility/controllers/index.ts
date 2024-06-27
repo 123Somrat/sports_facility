@@ -1,6 +1,6 @@
 import createFacility from "./createFacility";
 import getAllFacilitys from "./getAllFacilitys";
-import updateFacility from "./updateFacility";
+import updateAFacility from "./updateAFacility";
 
 
-export = { createFacility , getAllFacilitys , updateFacility }
+export = { createFacility , getAllFacilitys , updateAFacility }

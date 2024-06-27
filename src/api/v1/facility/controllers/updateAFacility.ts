@@ -1,7 +1,7 @@
 import asyncHandeler from "../../../../utils/asyncHandeler";
 import facilityService from "../../../../lib/facilitys";
 
-const updateFacility = asyncHandeler(async (req, res) => {
+const updateAFacility = asyncHandeler(async (req, res) => {
   // Have to update data
   const id = req.params.id;
   const haveToUpdate = req.body;
@@ -20,4 +20,4 @@ const updateFacility = asyncHandeler(async (req, res) => {
   });
 });
 
-export default updateFacility;
+export default updateAFacility;
