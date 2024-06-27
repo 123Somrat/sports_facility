@@ -12,13 +12,11 @@ const createFacility = async (data: facilityInterface) => {
   return createdFacility;
 };
 
-
 /**
- * 
+ *
  * @returns Facilitys
  */
 const getAllFacilitys = async () => {
-
   // Retriving facility from db
   const facilitys = await facilityModel.find({});
 
@@ -52,16 +50,38 @@ const updateFaculity = async (id: string, paylode: facilityInterface) => {
   return updatedFacility;
 };
 
-const deleteAFacility =async (id:string)=>{
-    const isFacilityExeist = await facilityModel.findById(id)
-     console.log(isFacilityExeist)
 
 
-}
+/**
+ * 
+ * @param id 
+ *  Search Facility with Given id
+ *  If given id data not exeist throw a Not found Error
+ *  if Given id Data already deleted then throw a Not found error
+ *  Update the isDeletd property value and update it into db
+ * @returns deletedFacility
+ */
+const deleteAFacility = async (id: string) => {
+  const isFacilityExeist = await facilityModel.findById(id);
+
+  // Throw Error is data not exeist or given id already deleted
+  if (!isFacilityExeist || isFacilityExeist.isDeleted === true) {
+    throw new HttpError(404, "Facility Not Found", "Facility Not exeist");
+  }
 
 
+  // Change the isdeleted propertu value
+   isFacilityExeist.isDeleted=true
 
 
+   // Update the data in db
+  const deletedFacility = await facilityModel.findByIdAndUpdate(
+    id,
+    isFacilityExeist,
+    { new: true }
+  );
 
+  return deletedFacility;
+};
 
-export = { createFacility, getAllFacilitys, updateFaculity };
+export = { createFacility, getAllFacilitys, updateFaculity, deleteAFacility };
