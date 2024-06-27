@@ -50,11 +50,9 @@ const updateFaculity = async (id: string, paylode: facilityInterface) => {
   return updatedFacility;
 };
 
-
-
 /**
- * 
- * @param id 
+ *
+ * @param id
  *  Search Facility with Given id
  *  If given id data not exeist throw a Not found Error
  *  if Given id Data already deleted then throw a Not found error
@@ -69,12 +67,10 @@ const deleteAFacility = async (id: string) => {
     throw new HttpError(404, "Facility Not Found", "Facility Not exeist");
   }
 
-
   // Change the isdeleted propertu value
-   isFacilityExeist.isDeleted=true
+  isFacilityExeist.isDeleted = true;
 
-
-   // Update the data in db
+  // Update the data in db
   const deletedFacility = await facilityModel.findByIdAndUpdate(
     id,
     isFacilityExeist,
