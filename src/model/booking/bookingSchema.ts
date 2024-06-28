@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import bookingInterface from "./bookingInterface";
+import { number } from "zod";
 
 const bookingSchema = new Schema<bookingInterface>({
   facilityId: {
@@ -19,6 +20,19 @@ const bookingSchema = new Schema<bookingInterface>({
     type: String,
     required: true,
   },
+  user:{
+     type : Schema.Types.ObjectId,
+     ref :'user',
+     required:true
+  },
+  payableAmount:{
+     type:Number,
+     required:true
+  },
+ isBooked:{
+     type :String,
+     required:true
+ }
 });
 const bookingModel = model<bookingInterface>("booking", bookingSchema);
 
