@@ -31,6 +31,8 @@ const createABooking = async (userId: string, paylode: bookingInterface) => {
   if (isFacilityExiest.isDeleted) {
     throw new HttpError(404, "Not Found", "Facility Not exiest");
   }
+
+
   // Call the calculate time differnce utils function
   const timeDifference = Math.abs(calculateTimeDiffernce(startTime, endTime));
 
