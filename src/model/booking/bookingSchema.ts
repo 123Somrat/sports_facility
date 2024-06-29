@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 import bookingInterface from "./bookingInterface";
-import { number } from "zod";
+
 
 const bookingSchema = new Schema<bookingInterface>({
   facilityId: {
@@ -8,7 +8,7 @@ const bookingSchema = new Schema<bookingInterface>({
     ref: "facility",
     required: true,
   },
-  data: {
+  date: {
     type: String,
     required: true,
   },

@@ -1,11 +1,11 @@
 import { Schema } from "mongoose"
-
+import { ObjectId } from "mongodb"
 interface bookingInterface extends Document  {
-     facilityId:typeof Schema.Types.ObjectId,
-     data:string,
+     facilityId: ObjectId,
+     date:string,
      startTime:string,
      endTime:string,
-     user: typeof Schema.Types.ObjectId,
+     user: ObjectId,
      payableAmount:number,
      isBooked:string
 
