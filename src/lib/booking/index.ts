@@ -65,8 +65,9 @@ const createBooking = async (userId: string, paylode: bookingInterface) => {
 
 const getAllBookings = async ()=> {
 
-    const bookings = await bookingModel.find({})
-
+    const bookings = await bookingModel.find({}).populate('user')
+     
+    
   
    return bookings
 }

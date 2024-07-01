@@ -4,7 +4,7 @@ import { controllers as facilityControllers } from '../api/v1/facility';
 import { controller as bookingControllers}from '../api/v1/booking';
 import requestValidation from '../middleWare/requestValidation';
 import userAuthenticationMiddleWare from '../middleWare/userAuthenticationMiddleWare';
-import hasPermission from '../middleWare/hasPermission';
+import authorize from '../middleWare/hasPermission';
 
 
 const router = expres.Router();
@@ -16,19 +16,19 @@ router.post('/api/v1/auth/login',requestValidation,userControllers.login)
 
 // Create and Get Facility
 router.route('/api/v1/facilitys')
-.get(userAuthenticationMiddleWare,hasPermission,facilityControllers.getAllFacilitys)
-.post(requestValidation,userAuthenticationMiddleWare,hasPermission,facilityControllers.createFacility)
+.get(userAuthenticationMiddleWare,authorize(['admin']),facilityControllers.getAllFacilitys)
+.post(requestValidation,userAuthenticationMiddleWare,authorize(['admin']),facilityControllers.createFacility)
 
 // Update and Delete a afcility
 router.route('/api/v1/facilitys/:id')
-.patch(requestValidation,userAuthenticationMiddleWare,hasPermission,facilityControllers.updateAFacility)
-.delete(userAuthenticationMiddleWare,hasPermission,facilityControllers.deleteAFacility)
+.patch(requestValidation,userAuthenticationMiddleWare,authorize(['admin']),facilityControllers.updateAFacility)
+.delete(userAuthenticationMiddleWare,authorize(['admin']),facilityControllers.deleteAFacility)
 
 
 // Create and Get Booking
 router.route('/api/v1/bookings')
-.get(bookingControllers.getAllBookings)
-.post(requestValidation,userAuthenticationMiddleWare,hasPermission,bookingControllers.createBooking)
+.get(userAuthenticationMiddleWare,authorize(['admin']),bookingControllers.getAllBookings)
+.post(requestValidation,userAuthenticationMiddleWare,authorize(['user']),bookingControllers.createBooking)
 
 
 

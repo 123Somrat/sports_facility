@@ -1,9 +1,10 @@
 import asyncHandeler from "../../../../utils/asyncHandeler";
+import bookingsService from '../../../../lib/booking'
+const getAllBookings = asyncHandeler(async(_req,res)=>{
+   
 
-const getAllBookings = asyncHandeler(async(req,res)=>{
-
-    console.log(req.path)
-
+    
+    
 
 
 });

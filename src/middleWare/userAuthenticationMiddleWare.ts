@@ -30,7 +30,7 @@ const userAuthenticationMiddleWare = async (
       
     if (decodedData) {
       req.user = decodedData as JwtPayload;
-      next();
+      return next();
     }
   } catch (err) {
     next(err);

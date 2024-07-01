@@ -2,6 +2,29 @@ import { NextFunction, Request, Response } from "express";
 import AuthenticatedUser from "../types/type";
 import HttpError from "../utils/httpError";
 
+type role = "user" | "admin";
+type roles = role[];
+
+const authorize =
+  (role: roles) =>
+  (req: AuthenticatedUser, res: Response, next: NextFunction) => {
+    try {
+      if (role.includes(req.user.paylode.role)) {
+        return next();
+      }
+
+      // Throwing error
+      throw new HttpError(403, "Forbiden", "Access denied");
+    } catch (err) {
+      next(err);
+    }
+  };
+
+export default authorize;
+
+
+
+/*
 const hasPermission = async (
   req: AuthenticatedUser,
   _res: Response,
@@ -18,7 +41,12 @@ const hasPermission = async (
        return next()
     }
 
+ // if role equal to admin then throw 403 error
+   if(req.path==='/api/v1/bookings' && role==='admin'){
+    throw new HttpError(403, "Access denied", "Access denied");
+   }
 
+    
 
     // if role user then throw a error
     if (role === "user") {
@@ -37,5 +65,10 @@ const hasPermission = async (
     next(err);
   }
 };
+ 
+*/
 
-export default hasPermission;
+
+
+
+//export default hasPermission;
