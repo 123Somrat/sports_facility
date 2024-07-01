@@ -4,7 +4,7 @@ import { controllers as facilityControllers } from '../api/v1/facility';
 import { controller as bookingControllers}from '../api/v1/booking';
 import requestValidation from '../middleWare/requestValidation';
 import userAuthenticationMiddleWare from '../middleWare/userAuthenticationMiddleWare';
-import authorize from '../middleWare/hasPermission';
+import authorize from '../middleWare/authorize';
 
 
 const router = expres.Router();
