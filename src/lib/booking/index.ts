@@ -57,4 +57,25 @@ const createBooking = async (userId: string, paylode: bookingInterface) => {
   return bookingConfirmation;
 };
 
-export = { createBooking };
+
+/**
+ * 
+ * @returns allBookings
+ */
+
+const getAllBookings = async ()=> {
+
+    const bookings = await bookingModel.find({})
+
+  
+   return bookings
+}
+
+
+
+
+
+
+
+
+export = { createBooking , getAllBookings };
