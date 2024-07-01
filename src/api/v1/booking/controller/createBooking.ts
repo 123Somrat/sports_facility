@@ -7,7 +7,7 @@ const createABooking = asyncHandeler(async (req, res) => {
   const bookingInfo = req.body;
 
   // Call CreateBooking service with needed argument
-  const bookings = await bookingService.createABooking(userId, bookingInfo);
+  const bookings = await bookingService.createBooking(userId, bookingInfo);
 
   // send Created bookings as a response
   res.status(201).json({

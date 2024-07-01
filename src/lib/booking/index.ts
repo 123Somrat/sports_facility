@@ -16,7 +16,7 @@ import HttpError from "../../utils/httpError";
  * Calculate payable amount
  * Finally checked everything then store the data in db
  */
-const createABooking = async (userId: string, paylode: bookingInterface) => {
+const createBooking = async (userId: string, paylode: bookingInterface) => {
   const { startTime, endTime } = paylode;
 
   // Retrive facility with id
@@ -57,4 +57,4 @@ const createABooking = async (userId: string, paylode: bookingInterface) => {
   return bookingConfirmation;
 };
 
-export = { createABooking };
+export = { createBooking };

@@ -26,7 +26,9 @@ router.route('/api/v1/facilitys/:id')
 
 
 // Create and Get Booking
-router.post('/api/v1/bookings',requestValidation,userAuthenticationMiddleWare,hasPermission,bookingControllers.createABooking)
+router.route('/api/v1/bookings')
+.get(bookingControllers.getAllBookings)
+.post(requestValidation,userAuthenticationMiddleWare,hasPermission,bookingControllers.createBooking)
 
 
 

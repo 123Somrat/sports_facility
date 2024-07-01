@@ -1,4 +1,5 @@
-import createABooking from "./createABooking";
+import createBooking from "./createBooking";
+import getAllBookings from "./getAllBookings";
 
 
-export = { createABooking }
+export = { createBooking , getAllBookings}
