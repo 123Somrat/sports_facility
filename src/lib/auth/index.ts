@@ -37,7 +37,7 @@ const register = async (paylode: UserInterface) => {
 const loginUser = async (paylode: loginDataType) => {
      // find user by email
     const user = await userService.findUserByEmail(paylode.email);
-
+    
     // if user not exeist throw 
     if (!user) {
       throw new HttpError(404,"Not found","User not exeist");
@@ -45,9 +45,12 @@ const loginUser = async (paylode: loginDataType) => {
 
        // Cheecking provided data
     const hasMathed = await mathingHased(paylode.password, user.password);
+      
 
      // if data not matched throw 401 error
     if (!hasMathed) {
+     await user.incrementFailedLogin();
+      
       throw new HttpError(401, "Invalid credentials", "Invalid credential");
     }
 
