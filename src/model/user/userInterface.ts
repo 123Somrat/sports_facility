@@ -1,4 +1,4 @@
-import { Document } from 'mongoose';
+import { Model , Document} from 'mongoose';
 
 interface UserInterface extends Document {
   name: string;
@@ -8,9 +8,15 @@ interface UserInterface extends Document {
   role: "user" | "admin";
   address: string;
   failedLoginAttempts: number
-  lockUntil: Date,
-  incrementFailedLogin: () => Promise<any>; 
-  resetLoginAttempts: () => Promise<any>;
+  lockUntil: Date | null,
 }
 
-export default UserInterface
+interface UserMethods{
+  incrementFaildLogin():  Promise<UserInterface>; // Define the type of the method
+  resetLoginAttempts(): Promise<UserInterface>;
+
+}
+
+type UserModel = Model<UserInterface, {}, UserMethods>;
+
+export {UserInterface ,UserMethods , UserModel}

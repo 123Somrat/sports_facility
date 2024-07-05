@@ -1,4 +1,5 @@
-import UserInterface from "../../model/user/userInterface";
+
+import { UserInterface } from "../../model/user/userInterface";
 import userModel from "../../model/user/userSchema";
 
 /**
@@ -26,8 +27,9 @@ const findUserByEmail = (email: string) => {
  * @param paylode
  * @returns user
  */
-const createUser = async (paylode: UserInterface) => {
-  const user = userModel.create(paylode);
+const createUser = async (paylode:UserInterface) => {
+  const user =await userModel.create(paylode);
+  
   return user;
 };
 

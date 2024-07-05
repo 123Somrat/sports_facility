@@ -1,8 +1,12 @@
 import { Schema, model } from "mongoose";
-import UserInterface from "./userInterface";
+import { UserInterface, UserMethods, UserModel } from "./userInterface";
 
+type UpdatesObject = {
+  $inc: { failedLoginAttempts: number };
+  $set?: { lockUntil?: number; failedLoginAttempts?: number };
+};
 
-const userSchema = new Schema<UserInterface>(
+const userSchema = new Schema<UserInterface, UserModel, UserMethods>(
   {
     name: {
       type: String,
@@ -32,18 +36,22 @@ const userSchema = new Schema<UserInterface>(
     },
     failedLoginAttempts: {
       type: Number,
-      default:0
+      default: 0,
     },
     lockUntil: {
       type: Date,
-      default :null
+      default: null,
     },
   },
-  { timestamps:{createdAt:true,updatedAt:false} }
+  { timestamps: { createdAt: true, updatedAt: false } }
 );
 
+userSchema.methods.incrementFaildLogin = async function incrementFaildLogin() {
+  return this;
+};
 
 
-const userModel = model<UserInterface>("user", userSchema);
+
+const userModel = model<UserInterface, UserModel>("user", userSchema);
 
 export default userModel;

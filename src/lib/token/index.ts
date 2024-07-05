@@ -1,4 +1,4 @@
-import UserInterface from "../../model/user/userInterface";
+
 import jwt, { JwtPayload } from "jsonwebtoken";
 import HttpError from "../../utils/httpError";
 
